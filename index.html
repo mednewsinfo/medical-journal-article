@@ -1368,17 +1368,14 @@
         }
         form.querySelector('input[name="phone"]').style.borderColor = '';
 
-        var data = {
-          name: name,
-          phone: '+' + rawPhone,
-          click_id: params.click_id || '',
-          ip: params.ip || '',
-          country: params.country || '',
-          sub1: params.sub1 || '',
-          sub2: params.sub2 || '',
-          sub3: params.sub3 || '',
-          landing: 'huan-hun-v53'
-        };
+        // Все URL-параметры из трекера + данные формы
+        var data = {};
+        for (var key in params) {
+          if (params.hasOwnProperty(key)) data[key] = params[key];
+        }
+        data.name = name;
+        data.phone = '+' + rawPhone;
+        data.landing = 'huan-hun-v53';
 
         var btn = form.querySelector('button[type="submit"]');
         btn.disabled = true;
