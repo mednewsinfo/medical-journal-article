@@ -80,14 +80,6 @@
       line-height: 1.8;
     }
     .steps li { margin-bottom: 6px; }
-    .timer-block {
-      background: #E8F5E9;
-      border-radius: 12px;
-      padding: 16px;
-      margin: 20px 0;
-    }
-    .timer-block .label { font-size: 14px; color: #555; margin-bottom: 8px; }
-    .timer-block .timer { font-size: 32px; font-weight: 700; color: #2E7D32; font-variant-numeric: tabular-nums; }
   </style>
 </head>
 <body>
@@ -100,18 +92,13 @@
     <h1>Заявка принята!</h1>
     <div class="name" id="userName"></div>
 
-    <div class="timer-block">
-      <div class="label">Ожидайте звонка в течение:</div>
-      <div class="timer" id="callTimer">15:00</div>
-    </div>
-
     <div class="warning">
       <b>Важно!</b> Для подтверждения заказа по акционной цене необходимо ответить на звонок оператора.
       Если мы не дозвонимся — <b>заявка будет аннулирована</b>, а акционное место передано следующему в очереди.
     </div>
 
     <ol class="steps">
-      <li>Оператор позвонит с номера <b>8-800</b> (бесплатно)</li>
+      <li>Оператор позвонит вам в ближайшее время</li>
       <li>Уточнит адрес доставки и удобное время</li>
       <li>Оплата при получении — никакой предоплаты</li>
     </ol>
@@ -132,16 +119,6 @@
       el.textContent = 'Спасибо за заявку!';
     }
 
-    // Таймер 15 минут
-    var total = 15 * 60;
-    var timerEl = document.getElementById('callTimer');
-    var tick = setInterval(function() {
-      total--;
-      if (total <= 0) { clearInterval(tick); timerEl.textContent = 'Ожидайте звонка'; return; }
-      var m = Math.floor(total / 60);
-      var s = total % 60;
-      timerEl.textContent = (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
-    }, 1000);
   </script>
 </body>
 </html>
